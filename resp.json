@@ -1,0 +1,231 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Fermenter 1",
+            "longName": "Fermenter 1 5 L Labfors",
+            "volume": 5.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 10,
+            "name": "Fermenter 10",
+            "longName": "Fermenter 10 3 L Labfors PAT1",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 11,
+            "name": "Fermenter 11",
+            "longName": "Fermenter 11 1 L Applikon",
+            "volume": 1.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 12,
+            "name": "Fermenter 12",
+            "longName": "Fermenter 12 Infors PEEK",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 13,
+            "name": "Fermenter 13",
+            "longName": "Fermenter 13 Cell Culture Lehar",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 14,
+            "name": "Fermenter 14",
+            "longName": "Fermenter 14 Cell Culture Lehar",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 15,
+            "name": "Fermenter 15",
+            "longName": "Fermenter 15 Cell Culture Lehar",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 16,
+            "name": "Fermenter 16",
+            "longName": "Fermenter 16 Cell Culture Lehar",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 17,
+            "name": "Fermenter 17",
+            "longName": "Fermenter 17 Techfors 20L",
+            "volume": 20.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 18,
+            "name": "Fermenter 18",
+            "longName": "Fermenter 18 Sartorius 10L",
+            "volume": 10.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 20,
+            "name": "Fermenter 19",
+            "longName": "Fermenter 19 DasBox Log",
+            "volume": 1.0,
+            "remark": "Minifors Parallel System GasAnalysis",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 2,
+            "name": "Fermenter 2",
+            "longName": "Fermenter 2 Multifors 2",
+            "volume": 1.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 21,
+            "name": "Fermenter 20",
+            "longName": "Fermenter 20 3 L Labfors PAT2",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 22,
+            "name": "Fermenter 21",
+            "longName": "Fermenter 21 Free Use",
+            "volume": 0.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 23,
+            "name": "Fermenter 22",
+            "longName": "Fermenter 22 RestAPI Test",
+            "volume": 0.0,
+            "remark": "NPA: Virtual reactor used for testing of the RestAPI --> Connection to Lucullus via API",
+            "running": true,
+            "type": "Bioreactor",
+            "process": {
+                "id": 11555,
+                "name": "Fermenter 22 2023 Week 10 006",
+                "startTimestamp": "2023-03-08T10:26:52",
+                "duration": 3948.840497,
+                "host": {
+                    "id": 123,
+                    "name": "lucnew.vt.tuwien.ac.at"
+                },
+                "operation": {
+                    "id": 7377,
+                    "name": "MasterLog"
+                },
+                "alarmsCount": 0,
+                "alarms": [],
+                "currentValues": [],
+                "isGroup": false,
+                "comments": []
+            }
+        },
+        {
+            "id": 3,
+            "name": "Fermenter 3",
+            "longName": "Fermenter 3 20 L Techfors",
+            "volume": 20.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 4,
+            "name": "Fermenter 4",
+            "longName": "Fermenter 4 10 L Techfors",
+            "volume": 10.0,
+            "remark": "Reused for DasBox GC valve control xD",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 5,
+            "name": "Fermenter 5",
+            "longName": "Fermenter 5 15 L Prototype",
+            "volume": 15.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 6,
+            "name": "Fermenter 6",
+            "longName": "Fermenter 6 10 L Sartorius",
+            "volume": 10.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 7,
+            "name": "Fermenter 7",
+            "longName": "Fermenter 7 10 L Chemap",
+            "volume": 10.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 8,
+            "name": "Fermenter 8",
+            "longName": "Fermenter 8 1 L Applikon",
+            "volume": 1.0,
+            "remark": "none",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 9,
+            "name": "Fermenter 9",
+            "longName": "Fermenter 9 3 L Labfors PEEK",
+            "volume": 3.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 25,
+            "name": "Minifors2_83",
+            "longName": "Minifors2_83&121",
+            "volume": 1.0,
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 24,
+            "name": "Numera",
+            "running": false,
+            "type": "Bioreactor"
+        },
+        {
+            "id": 19,
+            "name": "TFF Unit",
+            "longName": "TFF Unit",
+            "volume": 0.0,
+            "running": false,
+            "type": "Bioreactor"
+        }
+    ]
+}
