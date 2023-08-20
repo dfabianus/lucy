@@ -16,8 +16,10 @@ var test string
 
 type Reactor struct {
 	Data []struct {
-		Id   uint   `json:"id"`
-		Name string `json:"name"`
+		Id      uint    `json:"id"`
+		Name    string  `json:"name"`
+		Volume  float32 `json:"volume"`
+		Running bool    `json:"running"`
 	} `json:"data"`
 }
 
@@ -36,7 +38,7 @@ func get_reactors() {
 		return
 	}
 	for _, element := range reactors.Data {
-		fmt.Println("ID:", element.Id, "Name:", element.Name)
+		fmt.Println("ID:", element.Id, "Name:", element.Name, "Volume:", element.Volume, "Running:", element.Running)
 	}
 }
 
