@@ -35,11 +35,11 @@ type Process struct {
 	} `json:"data"`
 }
 
-func main_arc() {
-	fmt.Println("Hello, go")
-	fmt.Println(REST_URL)
-	get_process("Fermenter 22 2023 Week 10 006")
-}
+// func main_arc() {
+// 	fmt.Println("Hello, go")
+// 	fmt.Println(REST_URL)
+// 	get_process("Fermenter 22 2023 Week 10 006")
+// }
 
 func get_reactors() {
 	var reactors Reactor
