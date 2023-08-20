@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "id": 23,
+            "name": "Fermenter 22",
+            "longName": "Fermenter 22 RestAPI Test",
+            "volume": 0.0,
+            "remark": "NPA: Virtual reactor used for testing of the RestAPI --> Connection to Lucullus via API",
+            "running": true,
+            "type": "Bioreactor",
+            "process": {
+                "id": 11555,
+                "name": "Fermenter 22 2023 Week 10 006",
+                "startTimestamp": "2023-03-08T10:26:52",
+                "duration": 3961.257164,
+                "host": {
+                    "id": 123,
+                    "name": "lucnew.vt.tuwien.ac.at"
+                },
+                "operation": {
+                    "id": 7377,
+                    "name": "MasterLog"
+                },
+                "alarmsCount": 0,
+                "alarms": [],
+                "currentValues": [],
+                "isGroup": false,
+                "comments": []
+            }
+        }
+    ]
+}
