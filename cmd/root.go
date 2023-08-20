@@ -1,16 +1,14 @@
 /*
 Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
 import (
 	"os"
 
+	"github.com/dfabianus/lucy/cmd/get"
 	"github.com/spf13/cobra"
 )
-
-
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -36,6 +34,10 @@ func Execute() {
 	}
 }
 
+func addSubcomandPalletes() {
+	rootCmd.AddCommand(get.GetCmd)
+}
+
 func init() {
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
@@ -47,5 +49,3 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
-
