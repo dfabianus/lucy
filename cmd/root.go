@@ -6,7 +6,9 @@ package cmd
 import (
 	"os"
 
-	"github.com/dfabianus/lucy/cmd/get"
+	"lucy/cmd/get"
+	"lucy/cmd/set"
+
 	"github.com/spf13/cobra"
 )
 
@@ -36,6 +38,7 @@ func Execute() {
 
 func addSubcomandPalletes() {
 	rootCmd.AddCommand(get.GetCmd)
+	rootCmd.AddCommand(set.SetCmd)
 }
 
 func init() {
@@ -48,4 +51,6 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	addSubcomandPalletes()
 }

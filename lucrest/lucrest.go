@@ -1,4 +1,4 @@
-package main
+package lucrest
 
 import (
 	"encoding/json"
@@ -41,7 +41,7 @@ type Process struct {
 // 	get_process("Fermenter 22 2023 Week 10 006")
 // }
 
-func get_reactors() {
+func GetReactors() {
 	var reactors Reactor
 	body := get_request(CALLURL_REACTORS)
 	err := json.Unmarshal(body, &reactors)
@@ -54,7 +54,7 @@ func get_reactors() {
 	}
 }
 
-func get_running_reactors() {
+func GetRunningReactors() {
 	var reactors Reactor
 	body := get_request(CALLURL_REACTORS_RUNNING)
 	err := json.Unmarshal(body, &reactors)
