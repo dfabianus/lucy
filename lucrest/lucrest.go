@@ -68,7 +68,7 @@ func GetRunningReactors() {
 	//fmt.Println("Response Body:", string(body))
 }
 
-func get_running_processes() {
+func GetRunningProcesses() {
 	var processes Process
 	body := get_request(CALLURL_PROC_RUNNING)
 	err := json.Unmarshal(body, &processes)
@@ -82,7 +82,7 @@ func get_running_processes() {
 	//fmt.Println("Response Body:", string(body))
 }
 
-func get_process(process_name string) {
+func GetProcessByName(process_name string) {
 	var processes Process
 	body := get_request(CALLURL_PROC_NAME + process_name)
 	err := json.Unmarshal(body, &processes)
