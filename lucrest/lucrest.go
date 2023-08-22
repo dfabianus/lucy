@@ -12,8 +12,11 @@ const CALLURL_REACTORS = REST_URL + "reactors/"
 const CALLURL_REACTORS_RUNNING = REST_URL + "reactors?running=true"
 const CALLURL_PROC_RUNNING = REST_URL + "processes?running=true"
 const CALLURL_PROC_NAME = REST_URL + "processes?name="
+const CALLURL_PROC_ID = REST_URL + "processes?Id=" //
 const CALLURL_PORT_NAME = REST_URL + "ports?name="
-const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals?processId="
+
+// const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals?processId="
+const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals/"
 
 var USERNAME string = "student"
 var PASSWORD string = "bioVT"
@@ -93,10 +96,42 @@ func GetProcessByName(process_name string) {
 	for _, element := range processes.Data {
 		fmt.Println("ID:", element.Id, "Name:", element.Name)
 	}
+	fmt.Println("Response Body:", string(body))
+}
+
+func GetProcessById(process_id string) { // does not work yet
+	var processes Process
+	body := get_request(CALLURL_PROC_ID + process_id)
+	err := json.Unmarshal(body, &processes)
+	if err != nil {
+		fmt.Println("Error unmarshaling json:", err)
+		return
+	}
+	for _, element := range processes.Data {
+		fmt.Println("ID:", element.Id, "Name:", element.Name)
+	}
 	//fmt.Println("Response Body:", string(body))
 }
 
+func GetSignalsByProcessId(process_id string) { // does not work yet
+	//var signals Signal
+	body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + process_id)
+	//body := get_request("http://128.131.132.179:8080/lpims/rest/v1/signals?processId=8983")
+	//body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + "12212")
+	//err := json.Unmarshal(body, &signals)
+	// if err != nil {
+	// 	fmt.Println("Error unmarshaling json:", err)
+	// 	return
+	// }
+	// for _, element := range signals.Data {
+	// 	fmt.Println("ID:", element.Id, "Name:", element.Name)
+	// }
+	fmt.Println(CALLURL_SIGNALS_FROM_PROC_ID + process_id)
+	fmt.Println("Response Body:", string(body))
+}
+
 func get_request(callurl string) []byte {
+
 	client := &http.Client{}
 
 	req, err := http.NewRequest("GET", callurl, nil)
@@ -104,6 +139,9 @@ func get_request(callurl string) []byte {
 		fmt.Println("ERR!:", err)
 	}
 	req.SetBasicAuth(USERNAME, PASSWORD)
+	//req.Header.Add("Authorization", "Basic "+basicAuth(USERNAME, PASSWORD))
+	//req.Header.Add("Content-Type", "application/json")
+	//req.Header.Add("Transfer-Encoding", "chunked")
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("Error sending request:", err)
@@ -111,7 +149,7 @@ func get_request(callurl string) []byte {
 	}
 	defer resp.Body.Close()
 
-	// Check the HTTP status code
+	//Check the HTTP status code
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("HTTP Error:", resp.Status)
 		return nil
