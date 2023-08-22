@@ -6,6 +6,7 @@ package cmd
 import (
 	"os"
 
+	"lucy/cmd/app"
 	"lucy/cmd/get"
 	"lucy/cmd/set"
 
@@ -39,6 +40,7 @@ func Execute() {
 func addSubcomandPalletes() {
 	rootCmd.AddCommand(get.GetCmd)
 	rootCmd.AddCommand(set.SetCmd)
+	rootCmd.AddCommand(app.AppCmd)
 }
 
 func init() {
