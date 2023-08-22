@@ -9,8 +9,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var ProcessIdFlagSignals string
-
 // signalsCmd represents the signals command
 var signalsCmd = &cobra.Command{
 	Use:   "signals",
@@ -22,7 +20,10 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		lucrest.GetSignalsByProcessId(ProcessIdFlagSignals)
+		lucrest.GetSignalsByProcessId(ProcessIdFlag)
+		// if SignalIdFlagSignals != 0 {
+		// 	lucrest.GetSignalsBySignalId(SignalIdFlagSignals)
+		// }
 	},
 }
 
@@ -38,5 +39,5 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// signalsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	signalsCmd.Flags().StringVarP(&ProcessIdFlagSignals, "id", "i", "0", "get processes by process id")
+	// signalsCmd.Flags().Uint64VarP(&SignalIdFlagSignals, "signal-id", "s", 0, "get signals by process id")
 }

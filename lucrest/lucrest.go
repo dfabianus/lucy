@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strconv"
 )
 
 const REST_URL = "http://128.131.132.179:8080/lpims/rest/v1/"
@@ -14,9 +15,10 @@ const CALLURL_PROC_RUNNING = REST_URL + "processes?running=true"
 const CALLURL_PROC_NAME = REST_URL + "processes?name="
 const CALLURL_PROC_ID = REST_URL + "processes?Id=" //
 const CALLURL_PORT_NAME = REST_URL + "ports?name="
+const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals?processId="
+const CALLURL_SIGNALS_FROM_SIGNAL_ID = REST_URL + "signals/"
 
-// const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals?processId="
-const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals/"
+//const CALLURL_SIGNALS_FROM_PROC_ID = REST_URL + "signals/"
 
 var USERNAME string = "student"
 var PASSWORD string = "bioVT"
@@ -35,6 +37,30 @@ type Process struct {
 	Data []struct {
 		Id   uint   `json:"id"`
 		Name string `json:"name"`
+	} `json:"data"`
+}
+
+type Signal struct {
+	Data []struct {
+		Id   uint `json:"id"`
+		Port struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"Port"`
+		ProcessId uint `json:"processId"`
+		Reactor   struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"reactor"`
+		Device struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"device"`
+		SubDevice struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"subDevice"`
+		ModifiedTimestamp string `json:"modifiedTimestamp"`
 	} `json:"data"`
 }
 
@@ -96,7 +122,7 @@ func GetProcessByName(process_name string) {
 	for _, element := range processes.Data {
 		fmt.Println("ID:", element.Id, "Name:", element.Name)
 	}
-	fmt.Println("Response Body:", string(body))
+	// fmt.Println("Response Body:", string(body))
 }
 
 func GetProcessById(process_id string) { // does not work yet
@@ -113,21 +139,34 @@ func GetProcessById(process_id string) { // does not work yet
 	//fmt.Println("Response Body:", string(body))
 }
 
-func GetSignalsByProcessId(process_id string) { // does not work yet
-	//var signals Signal
-	body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + process_id)
+func GetSignalsByProcessId(process_id uint64) { // does not work yet
+	var signals Signal
+	body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + strconv.FormatUint(uint64(process_id), 10))
 	//body := get_request("http://128.131.132.179:8080/lpims/rest/v1/signals?processId=8983")
 	//body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + "12212")
-	//err := json.Unmarshal(body, &signals)
-	// if err != nil {
-	// 	fmt.Println("Error unmarshaling json:", err)
-	// 	return
-	// }
-	// for _, element := range signals.Data {
-	// 	fmt.Println("ID:", element.Id, "Name:", element.Name)
-	// }
-	fmt.Println(CALLURL_SIGNALS_FROM_PROC_ID + process_id)
-	fmt.Println("Response Body:", string(body))
+	err := json.Unmarshal(body, &signals)
+	if err != nil {
+		fmt.Println("Error unmarshaling json:", err)
+		return
+	}
+	for _, element := range signals.Data {
+		fmt.Println("Signal-ID:", element.Id, "Port-ID:", element.Port.Id, "Name:", element.Port.Name, "Device-Name:", element.Device.Name, "Subdevice-Name:", element.SubDevice.Name)
+	}
+}
+
+func GetSignalsBySignalId(signal_id uint64) { // does not work yet
+	var signals Signal
+	body := get_request(CALLURL_SIGNALS_FROM_SIGNAL_ID + strconv.FormatUint(uint64(signal_id), 10))
+	//body := get_request("http://128.131.132.179:8080/lpims/rest/v1/signals?processId=8983")
+	//body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + "12212")
+	err := json.Unmarshal(body, &signals)
+	if err != nil {
+		fmt.Println("Error unmarshaling json:", err)
+		return
+	}
+	for _, element := range signals.Data {
+		fmt.Println("Signal-ID:", element.Id, "Port-ID:", element.Port.Id, "Name:", element.Port.Name, "Device-Name:", element.Device.Name, "Subdevice-Name:", element.SubDevice.Name)
+	}
 }
 
 func get_request(callurl string) []byte {
@@ -139,6 +178,7 @@ func get_request(callurl string) []byte {
 		fmt.Println("ERR!:", err)
 	}
 	req.SetBasicAuth(USERNAME, PASSWORD)
+	req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8")
 	//req.Header.Add("Authorization", "Basic "+basicAuth(USERNAME, PASSWORD))
 	//req.Header.Add("Content-Type", "application/json")
 	//req.Header.Add("Transfer-Encoding", "chunked")

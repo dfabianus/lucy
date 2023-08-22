@@ -9,9 +9,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var ProcessNameFlag string
-var ProcessIdFlag uint64
-
 // processesCmd represents the processes command
 var processesCmd = &cobra.Command{
 	Use:   "processes",
@@ -39,6 +36,5 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	processesCmd.Flags().StringVarP(&ProcessNameFlag, "name", "n", "", "get processes by name")
-	processesCmd.Flags().Uint64VarP(&ProcessIdFlag, "id", "i", 0, "get processes by process id")
+
 }
