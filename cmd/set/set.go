@@ -9,6 +9,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var ProcessFlag string
+var SignalFlag string
+var PortFlag string
+var ReactorFlag string
+var RunningFlag bool
+
 // setCmd represents the set command
 var SetCmd = &cobra.Command{
 	Use:   "set",
@@ -25,21 +31,8 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	//SetCmd.AddCommand(SetCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	SetCmd.PersistentFlags().String("reactor-name", "rn", "define reactor name")
-	SetCmd.PersistentFlags().String("reactor-id", "ri", "define reactor id")
-	SetCmd.PersistentFlags().String("process-name", "pn", "define process name")
-	SetCmd.PersistentFlags().String("process-id", "pi", "define processs id")
-	SetCmd.PersistentFlags().String("port-name", "pon", "define port name")
-	SetCmd.PersistentFlags().String("port-id", "poi", "define port id")
-	SetCmd.PersistentFlags().String("value", "v", "define value to write")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// setCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	SetCmd.PersistentFlags().StringVarP(&ProcessFlag, "process", "p", "", "set by process name or id")
+	SetCmd.PersistentFlags().StringVarP(&SignalFlag, "signal", "s", "", "set by signal id")
+	SetCmd.PersistentFlags().StringVarP(&PortFlag, "port", "o", "", "set by port name or id")
+	SetCmd.PersistentFlags().StringVarP(&ReactorFlag, "reactor", "r", "", "set by reactor name or id")
 }

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"strconv"
 )
 
 const REST_URL = "http://128.131.132.179:8080/lpims/rest/v1/"
@@ -139,9 +138,9 @@ func GetProcessById(process_id string) { // does not work yet
 	//fmt.Println("Response Body:", string(body))
 }
 
-func GetSignalsByProcessId(process_id uint64) { // does not work yet
+func GetSignalsByProcessId(process_id string) { // does not work yet
 	var signals Signal
-	body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + strconv.FormatUint(uint64(process_id), 10))
+	body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + process_id)
 	//body := get_request("http://128.131.132.179:8080/lpims/rest/v1/signals?processId=8983")
 	//body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + "12212")
 	err := json.Unmarshal(body, &signals)
@@ -154,9 +153,9 @@ func GetSignalsByProcessId(process_id uint64) { // does not work yet
 	}
 }
 
-func GetSignalsBySignalId(signal_id uint64) { // does not work yet
+func GetSignalsBySignalId(signal_id string) { // does not work yet
 	var signals Signal
-	body := get_request(CALLURL_SIGNALS_FROM_SIGNAL_ID + strconv.FormatUint(uint64(signal_id), 10))
+	body := get_request(CALLURL_SIGNALS_FROM_SIGNAL_ID + signal_id)
 	//body := get_request("http://128.131.132.179:8080/lpims/rest/v1/signals?processId=8983")
 	//body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + "12212")
 	err := json.Unmarshal(body, &signals)
