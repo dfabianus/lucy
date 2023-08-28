@@ -63,6 +63,31 @@ type Signal struct {
 	} `json:"data"`
 }
 
+type singleSignal struct {
+	Data struct {
+		Id   uint `json:"id"`
+		Port struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"Port"`
+		RealTime bool        `json:"realTime"`
+		Values   [][]float64 `json:"values"`
+		Reactor  struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"reactor"`
+		Device struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"device"`
+		SubDevice struct {
+			Id   uint   `json:"id"`
+			Name string `json:"name"`
+		} `json:"subDevice"`
+		ModifiedTimestamp string `json:"modifiedTimestamp"`
+	} `json:"data"`
+}
+
 // func main_arc() {
 // 	fmt.Println("Hello, go")
 // 	fmt.Println(REST_URL)
@@ -155,7 +180,7 @@ func GetSignalsByProcessId(process_id string) { // does not work yet
 }
 
 func GetSignalsBySignalId(signal_id string) { // does not work yet
-	var signals Signal
+	var signals singleSignal
 	body := get_request(CALLURL_SIGNALS_FROM_SIGNAL_ID + signal_id)
 	//body := get_request("http://128.131.132.179:8080/lpims/rest/v1/signals?processId=8983")
 	//body := get_request(CALLURL_SIGNALS_FROM_PROC_ID + "12212")
@@ -164,9 +189,10 @@ func GetSignalsBySignalId(signal_id string) { // does not work yet
 		fmt.Println("Error unmarshaling json:", err)
 		return
 	}
-	for _, element := range signals.Data {
-		fmt.Println("Signal-ID:", element.Id, "Port-ID:", element.Port.Id, "Name:", element.Port.Name, "Device-Name:", element.Device.Name, "Subdevice-Name:", element.SubDevice.Name)
-	}
+	element := signals.Data
+	fmt.Println("Signal-ID:", element.Id, "Port-ID:", element.Port.Id, "Name:", element.Port.Name, "Device-Name:", element.Device.Name, "Subdevice-Name:", element.SubDevice.Name)
+	// fmt.Println("Response Body:", string(body))
+
 }
 
 func get_request(callurl string) []byte {
